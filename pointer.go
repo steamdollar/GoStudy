@@ -1,5 +1,5 @@
 // & operator는 변수의 address를 구하는데 사용된다.
-// 즉 &a는 변수 a의 memory address를 출력해준다.
+// &a는 변수 a의 memory address를 출력해준다.
 
 package main
 import "fmt"
