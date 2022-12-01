@@ -7,10 +7,8 @@ import (
 )
 
 /*
-	직접 에러 메시지를 만들고 싶다면 error 패키지의 New() 함수를 사용하면 된다.
+	직접 에러 메시지를 만들고 싶다면 errors 패키지의 New() 함수를 사용하면 된다.
 	 
-	
-
 */
 
 func fileopen(name string) (string, error) {

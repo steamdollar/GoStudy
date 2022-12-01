@@ -12,7 +12,8 @@ func main() {
 		return
 	}
 
-	l, err := f.WriteString("Write Line one")
+	l, err := f.WriteString("한글도 되나2?")
+	// l은 length를 의미
 
 	if err != nil {
 		fmt.Println(err)

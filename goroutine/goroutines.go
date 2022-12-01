@@ -41,3 +41,14 @@ func main() {
 }
 
 // go routine이 시작되기 전에 main 함수가 종료되었으므로 In display는 출력되지 않는다.
+
+/*
+result
+
+	In main
+	In main
+	In main
+	In main
+	In main
+
+*/

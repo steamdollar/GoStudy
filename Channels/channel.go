@@ -2,17 +2,25 @@
 
 channel은 함수 간에 상호작용을 구현하는 방법이다. 
 
-한 routine이 데이터를 올리면, 다른 routine이 이에 접근할수 있도록 그 매개체가 된다고 생각하면 된다.
+한 routine이 데이터를 올리면, 다른 routine이 이에 접근할수 있도록 
+
+그 매개체가 된다고 생각하면 된다.
 
 채널 선언 syntax는 다음과 같다.
 
+
 chan_name := make(chan datatype)
 
+get_info := make(chan string)
+
 ch := make(chan int)
+
 
 채널로 데이터를 전송하는 코드는 다음 syntax를 따른다.
 
 chan_name <- var_name
+
+chan_name에 var_name을 넣는다.
 
 ch <- x
 
@@ -63,5 +71,9 @@ x := <- ch 가 실행되려면 channel의 data를 먼저 수신해야한다.
 display() 함수는 5초를 기다렸다가 실행되고 데이터를 channel ch로 push한다.
 
 main()이 데이터를 channel로부터 데이터를 수신하면 unblock되어 계속 실행된다.
+
+Inside display()
+Inside main()
+Printing x main() after taking from channel:  1234
 
 */
