@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	data, err := ioutil.ReadFile("data.txt")
+	data, err := ioutil.ReadFile("./txt/data.txt")
 	
 	if err != nil {
 		fmt.Println("file reading error", err)

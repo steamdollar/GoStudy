@@ -6,13 +6,18 @@ import (
 )
 
 func main() {
-	f, err := os.Create("file1.txt")
+	f, err := os.Create("./txt/file1.txt")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	l, err := f.WriteString("한글도 되나2?")
+	fmt.Println(f)
+	
+
+	l1, err := f.WriteString("first line of the file \n")
+
+	l2, err := f.WriteString("한글도 되나2?")
 	// l은 length를 의미
 
 	if err != nil {
@@ -21,8 +26,9 @@ func main() {
 		return
 	}
 
-	fmt.Println(l, "bytes written")
-	err = f.Close()
+	fmt.Println(l1, "bytes written")
+	fmt.Println(l2, "bytes written")
+	// err = f.Close()
 
 	if err != nil {
 		fmt.Println(err)

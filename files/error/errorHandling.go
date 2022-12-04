@@ -9,8 +9,7 @@ func fileopen(name string) {
 	f, er := os.Open(name)
 	// 일반적으로 함수는 마지막 리턴값에 에러를 넣어준다.
 
-	fmt.Println(f)
-	fmt.Println(er)
+	// fmt.Println(f)
 
 	if er != nil {
 		fmt.Println(er)
@@ -22,5 +21,5 @@ func fileopen(name string) {
 }
 
 func main() {
-	fileopen("invalid.txt")
+	fileopen("./txt/datas.txt")
 }
