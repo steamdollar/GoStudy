@@ -1,3 +1,4 @@
+// https://www.guru99.com/google-go-tutorial.html
 package main
 
 import ("fmt")
@@ -8,6 +9,13 @@ func main() {
 	fmt.Println("Hello Golang\n")
 
 	// 변수 선언
+
+	var popo int
+
+	fmt.Println(popo)
+
+	var popo2 string
+	fmt.Println(popo2)
 
 	var qwe int
 	qwe = 10
@@ -74,6 +82,11 @@ func main() {
 
 
 	// Arrays - fixed size, elements of same type
+	var array0 [3]string
+	fmt.Println("================")
+	fmt.Println(array0)
+	fmt.Println("================")
+
 	array1 := [3] string {"a", "b", "c"}
 
 	fmt.Println(array1)
