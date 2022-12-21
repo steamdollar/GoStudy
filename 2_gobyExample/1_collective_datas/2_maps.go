@@ -72,6 +72,4 @@ func main() {
 	fmt.Println(isExist3)
 	// _를 쓰면 이 값을 생략하겠다는 것을 의미한다.
 	// 이 경우 true/false 값만이 출력된다.
-
 }
-

@@ -1,0 +1,33 @@
+package main
+
+import "fmt"
+
+/*
+	재귀 함수..
+
+*/
+
+func fact(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * fact(n-1)
+}
+
+// n!을 이렇게 계산할 수가 있다..
+
+func main() {
+	fmt.Println(fact(7))
+
+	var fib func (n int) int
+
+	fib = func ( n int) int {
+		if n < 2 {
+			return n
+		}
+
+		return fib(n-1) + fib(n-2)
+	}
+
+	fmt.Println(fib(7))
+}
