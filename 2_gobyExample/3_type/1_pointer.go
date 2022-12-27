@@ -6,8 +6,10 @@ func zeroval(ival int) {
 }
 
 func zeroptr(iptr *int) {
-	// *int는 int pointer를 의미한다.
-	
+	// *int는 int pointer를 의미한다. 즉 i(int)변수에 대한 정보가 있는 메모리 어드레스
+
+	// fmt.Println(iptr) - 0xc~~
+
 	*iptr = 0
 	// pointer가 가리키는 값을 조작한다.
 }
@@ -29,4 +31,5 @@ func main() {
 	// 애는 바뀐다. 메모리 주소를 직접 찾아가서 거기에 있는 값을 조작했기 때문
 	
 	fmt.Println("pointer : ", &i) // 0x~~
+	// 메모리 주소는 변하지 않는다.
 }

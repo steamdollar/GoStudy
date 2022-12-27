@@ -4,7 +4,6 @@ import "fmt"
 
 /*
 	재귀 함수..
-
 */
 
 func fact(n int) int {

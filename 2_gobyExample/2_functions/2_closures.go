@@ -4,7 +4,6 @@ import "fmt"
 
 /*
 	go는 익명 함수를 지원해 closure를 형성할 수 있다.
-
 */
 
 func intSeq() func() int {

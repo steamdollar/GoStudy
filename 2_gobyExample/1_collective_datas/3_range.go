@@ -5,7 +5,6 @@ import ( "fmt" )
 /*
 	range는 다양한 군집형 데이터의 요소들을 
 	반복적으로 이용하고 싶을 때 사용한다.
-
 */
 
 func main() {
@@ -19,7 +18,7 @@ func main() {
 		sum += num
 	}
 	fmt.Println(sum)
-	//
+	// 9 
 
 	for i , num := range nums {
 		if num == 3 {
@@ -28,6 +27,7 @@ func main() {
 			fmt.Println("depreciated")
 		}
 	}
+	// depreciated index1 depreciated
 	
 	// 2. map
 	obj := map[string]string{"a" : "apple", "b" : "bus"}
@@ -47,7 +47,8 @@ func main() {
 		fmt.Printf("%d -> %s\n", k2, v2)
 	}
 
-	for i,c := range "go" {
+	for i, c := range "go" {
 		fmt.Println(i,c)
 	}
+	// string 자체도 반복이 가능하다. 일단은 이렇게만 알아두자.
 }
