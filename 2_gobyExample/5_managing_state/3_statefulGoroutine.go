@@ -44,5 +44,67 @@ func main() {
 
 	go func () {
 		var state = make(map[int]int)
+		
+		for {
+			select {
+			case read := <-reads:
+				// reads 채널에서 요청을 받으면
+					read.resp <- state[read.key]
+					// 응답으로 read.resp 채널에 state의 값을 전송
+			case write := <-writes:
+				// write 채널에서 요청을 받으면
+				state[write.key] = write.val
+				// 받은 값으로 state를 바꾸고
+				write.resp <- true
+				// true를 응답으로 전송
+			}
+		}
+	}()
+	// state를 소유하는 고루틴
+	// 응답은 요청된 동작을 수행하고, 응답 채널에 성공을 의미하는 응답을 전송하는 방식으로 실행된다.
+	
+	for r := 0; r <100; r++ {
+		go func() {
+			for {
+				read := readOp{
+					key : rand.Intn(5),
+					resp : make(chan int)}
+				// read 변수 선언 후
+				reads <- read
+				// 이를 채널에 넣는다.
+				<-read.resp
+				atomic.AddUint64(&readOps, 1)
+				time.Sleep(time.Millisecond)
+				// readOps 값에 1을 더하고 1ms sleep
+				
+			}
+		}()
 	}
+	// 고루틴 100개를 실행 > reads 채널을 통해 state 소유 고루틴에게 reads를 이슈
+	// 각 read는 readOp을 생성하고 이를 reads 채널을 통해 전송한 다음, resp 채널을 통해 결과를 받는다.
+	
+	for w :=0; w < 10; w++ {
+		go func() {
+			for {
+				write := writeOp{
+					key : rand.Intn(5),
+					val : rand.Intn(100),
+					resp : make(chan bool)}
+				// write 변수 선언
+				writes <- write
+				// 변수를 채널로 전송
+				<- write.resp
+				// 응답 수신
+				atomic.AddUint64(&writeOps, 1)
+				time.Sleep(time.Millisecond)
+			}
+		}()
+	}
+	// write하는 고루틴 10개도 동일하게 작동한다.
+	time.Sleep(time.Second)
+	
+	readOpsFinal := atomic.LoadUint64(&readOps)
+	fmt.Println("readOps:", readOpsFinal)
+	writeOpsFinal := atomic.LoadUint64(&writeOps)
+	fmt.Println("writeOps: ", writeOpsFinal)
 }
